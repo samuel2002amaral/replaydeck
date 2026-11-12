@@ -1,0 +1,506 @@
+1|ReplayDeck (capture)
+2|Choisissez le dossier d'enregistrement dans Paramètres.
+3|La vidéo d'OBS n'est pas initialisée.
+4|Impossible de créer le dossier %1
+5|Caméra %1 : %2
+6|Aucune caméra configurée.
+7|C'est l'enregistrement en cours.
+8|Limite disque : %1 ancien(s) enregistrement(s) supprimé(s)
+9|Enregistrement arrêté : le disque a atteint l'espace libre minimum (%1 Go)
+10|Exportation…
+11|enregistrement introuvable
+12|Exportation… %1
+13|%1 clip(s) exporté(s) dans %2
+14| — %1 en erreur : %2
+15|Overlays
+16|Tout retirer
+17|Retire tous les overlays de l'antenne
+18|Choisissez la source et la transition de chaque overlay (ou clic droit sur un overlay)
+19|Overlay %1 : vide — cliquez pour choisir la source
+20|Overlay %1 : %2\nClic active/désactive • clic droit configure
+21|Canaux d'overlay
+22|<b>Source ou scène</b>
+23|<b>Transition</b>
+24|<b>Durée</b>
+25|Aucune
+26| (introuvable)
+27|Coupure
+28|Fondu
+29|Les stingers utilisent la durée de leur propre animation
+30|Enregistrer
+31|Annuler
+32|Replay : démarrer/arrêter l'enregistrement
+33|Replay : lecture
+34|Replay : marche arrière on/off
+35|Replay : pause
+36|Replay : lecture/pause
+37|Replay : avance rapide (2x/4x/8x/16x)
+38|Replay : retour au direct
+39|Replay : image précédente
+40|Replay : image suivante
+41|Replay : reculer de 1 s
+42|Replay : avancer de 1 s
+43|Replay : reculer de 5 s
+44|Replay : avancer de 5 s
+45|Replay : Mark In
+46|Replay : Mark Out
+47|Replay : événement automatique 5 s
+48|Replay : événement automatique 10 s
+49|Replay : événement automatique 20 s
+50|Replay : lire le dernier événement (démarrer / arrêter)
+51|Replay : Play Events (démarrer / arrêter)
+52|Replay : retour au début du clip
+53|Replay : Loop on/off
+54|Replay : son du replay on/off
+55|Replay : exporter les événements de la liste
+56|Replay : passer à l'antenne (transition d'entrée)
+57|Replay : retirer de l'antenne (retour à la scène précédente)
+58|Replay : sélectionner le canal A
+59|Replay : sélectionner le canal B
+60|Replay : sélectionner A+B (synchronisés)
+61|Replay : synchroniser B avec A
+62|Replay : zoom — rapprocher (maintenir)
+63|Replay : zoom — éloigner (maintenir)
+64|Replay : zoom — déplacer à gauche (maintenir)
+65|Replay : zoom — déplacer à droite (maintenir)
+66|Replay : zoom — déplacer vers le haut (maintenir)
+67|Replay : zoom — déplacer vers le bas (maintenir)
+68|Replay : zoom — retour à l'image entière
+69|Replay : vitesse -5%
+70|Replay : vitesse +5%
+71|Replay : vitesse %1%
+72|Overlay %1 : on/off
+73|Replay : caméra %1
+74|ReplayDeck (overlays)
+75|ReplayDeck GT (titres)
+76|Horloge et état
+77|Sélection A+B / A / B
+78|Exporter
+79|Ligne de temps
+80|Événement précédent / suivant
+81|Marche arrière
+82|Avance rapide
+83|Direct
+84|IN / OUT
+85|Annuler IN
+86|−5 / −10 / −20 s
+87|Vitesses
+88|Loop
+89|Son
+90|Zoom (rapprocher et déplacer)
+91|Caméras de la sortie A
+92|Caméras de la sortie B
+93|Bouton P (aperçu de la sortie)
+94|Dernier événement à l'antenne
+95|Play Events
+96|Événement sélectionné à l'antenne
+97|Supprimer l'événement sélectionné
+98|Avis (images perdues, exportation…)
+99|Supprimer TOUT le cache de ReplayDeck ?\n\n• %1 enregistrement(s) — %2\n• les clips exportés à l'intérieur\n• toute la liste d'événements\n• les fichiers temporaires du plugin\n\n
+100|L'enregistrement sera d'abord ARRÊTÉ.\n\n
+101|Les paramètres, titres GT et overlays ne sont pas supprimés. Action irréversible.
+102|Vider le cache
+103|Libéré : %1\nImpossible de supprimer :\n%2
+104|Cache vidé : %1 libérés.
+105|Enregistrements du replay
+106|Enregistrement
+107|Taille
+108|Événements
+109|● enregistrement en cours
+110|<b>%1</b> dans %2 enregistrement(s) • libre sur le disque : <b>%3</b>%4
+111| • limite : %1 Go
+112|Cocher les anciens
+113|Coche tout, sauf le plus récent et celui en cours d'enregistrement
+114|Ouvrir le dossier
+115|Supprimer la sélection
+116|Supprimer des enregistrements
+117|Supprimer %1 enregistrement(s) (%2) ?\n%3 de leurs événement(s) quittent la liste.\n\nAction irréversible.
+118|Impossible de supprimer :\n
+119|Vider tout le cache
+120|Supprime TOUS les enregistrements du replay (y compris les clips exportés),\nla liste d'événements et les fichiers temporaires du plugin. Arrête l'enregistrement avant.
+121|Fermer
+122|Zoom : cliquez ou glissez pour déplacer, molette pour rapprocher,\ndouble-clic pour revenir à l'image entière
+123|Zoom :
+124|Zoom : retour à l'image entière
+125|gauche (maintenir)
+126|haut (maintenir)
+127|bas (maintenir)
+128|droite (maintenir)
+129|éloigner (maintenir)
+130|rapprocher (maintenir)
+131|Zoom : 1x à 5x
+132|Transport (◀ ▶ ▶▶)
+133|IN / OUT et −5 / −10 / −20
+134|Loop et son
+135|Zoom
+136|Caméras A / B
+137|Dernier à l'antenne / Play Events
+138|Standard — liste en haut, commandes en bas
+139|Commandes en haut, liste en bas
+140|Côte à côte — liste à gauche, commandes à droite
+141|Commandes seules (sans la liste d'événements)
+142|Saut de ligne — glissez ; double-clic pour retirer
+143|Glissez pour déplacer ce groupe
+144|Paramètres de ReplayDeck
+145|Où et comment les caméras sont enregistrées. La qualité constante garde la même image sur chaque action et n'utilise le disque que si nécessaire.
+146|Caméras et son
+147|Antenne
+148|Ce qui se passe quand le replay entre et sort du programme.
+149|Transitions
+150|Cochez les éléments voulus sur le panneau. Les flèches et − / + fonctionnent en maintenant ; rien ne sort de l'image. Raccourcis : OBS → Paramètres → Raccourcis → "Replay : zoom".
+151|Mini-carte (glisser et molette)
+152|Curseur
+153|Flèches (haut, bas, gauche, droite)
+154|Boutons − / + (rapprocher et éloigner)
+155|Bouton 1x (image entière)
+156|Flèches :
+157|en ligne
+158|en croix
+159|Place sur le panneau :
+160|Automatique (la croix va dans la colonne de droite)
+161|Colonne de droite
+162|Avec les boutons
+163|<b>Aperçu sur le panneau</b>
+164|Rien de coché : le zoom reste uniquement sur les raccourcis.
+165|Disposition du panneau
+166|Nom des groupes
+167|Sans nom
+168|Cadre avec nom au-dessus
+169|Nom sur la bordure
+170|Nom sur le côté (vertical)
+171|Nom au-dessus seulement (sans cadre)
+172|Cadre seulement (sans nom)
+173|<b>Ordre des boutons</b> — glissez pour changer
+174|↵  saut de ligne
+175|▲ Monter
+176|▼ Descendre
+177|+ Saut
+178|Saut de ligne : ce qui suit commence sur une nouvelle ligne
+179|Retirer le saut
+180|✥ Organiser en glissant sur le panneau
+181|Enregistre et ferme cette fenêtre ; sur le panneau, glissez chaque groupe où vous voulez
+182|<b>Ce qui s'affiche</b> — tout reste sur les raccourcis
+183|Rétablir par défaut
+184|Panneau
+185|Disque
+186|Pour que le replay ne remplisse pas le PC. Les enregistrements les plus anciens sont supprimés d'abord (avec leurs événements) ; celui en cours n'est jamais supprimé.
+187|sans limite
+188|Taille maximale du dossier d'enregistrements. Au-delà, les plus anciens sont supprimés.
+189|Limite du dossier
+190| Go libres
+191|désactivé
+192|Si le disque a moins que cela, les anciens enregistrements sont supprimés ;\ns'il n'y a plus rien à supprimer, l'enregistrement s'arrête (le PC n'est jamais plein).
+193|Espace libre minimum
+194|Voir et supprimer les enregistrements…
+195|Vider tout le cache…
+196|Arrêtez l'enregistrement (●) pour modifier
+197|App
+198|Contrôle par téléphone/tablette : le plugin répond comme vMix (port 8088), donc les apps faites pour vMix fonctionnent avec OBS.
+199|Parcourir
+200|Dossier
+201|Vient de Paramètres → Vidéo d'OBS (chaque caméra enregistre à la taille de sa source)
+202|Maximale — qualité constante
+203|Haute — qualité constante  ★ recommandée
+204|Équilibrée — qualité constante
+205|Débit fixe 40 Mbps
+206|Débit fixe 80 Mbps
+207|Débit fixe 144 Mbps
+208|Débit fixe 220 Mbps
+209|Qualité constante : toutes les images aussi nettes (même les actions rapides) ;\nl'espace disque varie selon l'image. Débit fixe : espace disque prévisible.
+210|Qualité constante QP %1
+211|Débit fixe %1 Mbps
+212|Format
+213|Qualité
+214|Automatique (NVENC → QSV → AMF → MJPEG)
+215|Encodeur
+216|Caméras
+217|Configuration rapide…
+218|Assistant : coche les caméras, choisit le dossier et crée la scène Replay
+219|+ Ajouter une caméra…
+220|Crée la source de la caméra (et une scène avec elle) et ouvre les propriétés d'OBS
+221|Piste %1 d'OBS
+222|Canaux 1-2
+223|Canaux 3-4
+224|Son enregistré
+225|Son du replay
+226|Automatique (scène avec la sortie A)
+227|Scène qui passe à l'antenne quand le replay joue (doit avoir la source "ReplayDeck (sortie)")
+228|Scène du replay
+229|Transition actuelle d'OBS
+230|durée d'OBS
+231|Le stinger utilise la durée de sa propre vidéo
+232|Entrée
+233|Sortie
+234|Fondu (mix)
+235|Fondu au noir
+236|Transition d'OBS (GT Stinger, Stinger…)
+237|Suivre la vitesse du replay
+238|Au ralenti, la transition est aussi plus lente
+239|Entre les événements
+240|Transition créée dans "Transitions de scène" d'OBS (par exemple un GT Stinger), utilisée au changement d'événement
+241|commence
+242|Combien de temps avant le changement d'événement la transition commence — utilisez le temps que l'animation met à couvrir l'écran
+243|durée
+244|Seulement pour les transitions sans durée propre ; les stingers utilisent la durée de l'animation
+245|Transition d'OBS
+246|Le stinger du changement de scène passe au-dessus des overlays et titres
+247|Activé : l'animation du stinger couvre les overlays (O1–O8) et les titres GT pendant la transition.\nDésactivé : les overlays et titres restent toujours au-dessus, même du stinger.
+248|Stinger
+249|Liste entière
+250|À partir de l'événement sélectionné
+251|Seulement l'événement sélectionné
+252|Play Events joue
+253|Ralenti fluide — mélange les images voisines (moins de « saccades » à 25–50%)
+254|Désactivé : chaque image enregistrée est répétée (image plus nette, mouvement saccadé).\nActivé : entre deux images, affiche le mélange des deux (mouvement continu).
+255|Ralenti
+256|⟲ et Play Events passent sur la scène du replay
+257|Revenir à la scène précédente à la fin du clip, après
+258|Automatique
+259|Activé
+260|port
+261|TCP
+262|Cet ordinateur seulement
+263|Décoché : l'app peut être sur un autre PC/téléphone du même réseau
+264|Contrôle par l'app
+265|Dans l'app (Panneau vMix), dans Réglages, utilisez cette adresse et ce port à la place de vMix.\nInputs de l'app = scènes, titres GT, sources et le Replay d'OBS.
+266|Choisissez un dossier d'enregistrement
+267|Choisissez au moins une caméra
+268|%1 d'enregistrement disponible pour %2 caméra(s) · ~%3 Mbps chacune
+269|%1 Go utilisés dans ce dossier de replays
+270|Dossier de la session
+271|Langue du plugin
+272|Automatique (langue d'OBS)
+273|● ENREG.
+274|Démarre/arrête l'enregistrement continu des caméras (sans lui, pas de replay)
+275|Zoom actif sur la sortie — cliquez sur 1x pour revenir à l'image entière
+276|Temps d'enregistrement qui tient encore sur le disque, au rythme actuel
+277|Commande les sorties A et B en même temps
+278|Commande seulement la sortie A
+279|Commande seulement la sortie B
+280|Exporter : enregistre les événements en vidéo (MP4), sans réencodage
+281|Exporter l'événement sélectionné
+282|Exporter tous les événements
+283|Paramètres : caméras, enregistrement, zoom, panneau, transitions et app
+284|<b>Organiser :</b> glissez les groupes. <b>Position libre</b> = déposez n'importe où (sans couvrir un autre groupe) ; sinon, côte à côte avec des ↵ sauts de ligne.
+285|Position libre
+286|Activé : chaque groupe reste exactement là où vous le déposez
+287|+ Saut de ligne
+288|Commence une nouvelle ligne à partir d'ici
+289|Standard
+290|Revient à l'ordre d'origine
+291|Terminer
+292|Glissez pour trouver n'importe quel moment de l'enregistrement
+293|Événement précédent
+294|Événement suivant
+295|Lecture arrière (on/off)
+296|Lecture / pause
+297|Avance rapide (2x, 4x…)
+298|LECTURE
+299|DIRECT
+300|Ramène les sorties sélectionnées au direct
+301|SORTIE
+302|IN
+303|Mark In : marque le début d'un événement
+304|OUT
+305|Mark Out : ferme l'événement
+306|✕ IN
+307|Annule le IN marqué
+308|Crée un événement avec les %1 dernières s et s'arrête à son début
+309|MARQUER
+310|Vitesse de lecture %1%
+311|Vitesse (%)
+312|VITESSE
+313|Répète le clip (ou la séquence Play Events) sans arrêt
+314|Active/désactive le son d'origine pendant le replay
+315|BOUCLE · SON
+316|ZOOM
+317|Envoie la scène de la sortie %1 dans l'aperçu d'OBS
+318|CAMÉRAS
+319|⟲ Dernier à l'antenne
+320|Passe sur la scène du replay, joue le dernier événement et revient.\nCliquez à nouveau pour arrêter avant la fin.
+321|▶▶ Play Events
+322|Passe à l'antenne et joue les événements à la suite (ce qui joue est défini dans ⚙).\nCliquez à nouveau pour arrêter avant la fin.
+323|▶ Sélection à l'antenne
+324|Passe à l'antenne, joue l'événement sélectionné (tous les angles cochés) et revient
+325|Supprime l'événement sélectionné
+326|Supprimer l'événement %1 ?
+327|ANTENNE
+328|Événement
+329|Durée
+330|Vit.
+331|Sortie %1 : caméra %2%3 (même instant, autre angle)
+332|Aucune scène n'a la source "ReplayDeck (sortie)" sur le canal %1
+333|Le bouton P utilise le Mode Studio d'OBS — activez-le pour avoir l'Aperçu
+334|Scène "%1" créée avec le replay (canal A)
+335|Prêt ! Marquez IN/OUT ou utilisez ◀◀ pour revoir l'action
+336|❚❚ PAUSE
+337|ZOOM %1x
+338|RESTE %1
+339|%1 images perdues
+340|IN marqué : appuyez sur OUT pour fermer l'événement
+341|⚙ pour configurer, ● pour enregistrer
+342|In %1 — Out %2
+343|Vitesse propre de cet événement (ex. : 50). "-" utilise la vitesse actuelle
+344|Cochez les angles de cet événement ; double-clic pour écrire un commentaire
+345|ReplayDeck (images)
+346|ReplayDeck (sortie)
+347|Canal de replay
+348|Canal A
+349|Canal B
+350|Périphérique de capture vidéo (webcam, carte d'acquisition)
+351|Périphérique de capture vidéo (V4L2)
+352|Périphérique de capture vidéo
+353|Blackmagic DeckLink
+354|AJA
+355|NDI
+356|Caméra IP / SRT / RTMP (adresse)
+357|Capture de jeu (eSports)
+358|Capture d'écran (moniteur)
+359|Capture de fenêtre
+360|Capture d'écran
+361|Média (fichier vidéo — bien pour tester)
+362|Caméra %1
+363|Ajouter une caméra
+364|Crée la source de la caméra et une scène avec elle seule. Ensuite OBS ouvre les propriétés pour choisir l'appareil.
+365|Aucun type de caméra disponible dans cet OBS.
+366|Autre source d'OBS…
+367|Type
+368|Source
+369|Nom
+370|rtsp://utilisateur:motdepasse@192.168.0.50:554/stream  ou  srt://...
+371|Adresse
+372|Créer aussi une scène avec cette caméra
+373|Créer la caméra
+374|Une source ou scène porte déjà ce nom.
+375|Indiquez l'adresse de la caméra.
+376|Impossible de créer la caméra.
+377|Scène
+378|%1 Go libres sur ce disque
+379|Arrêtez l'enregistrement (●) avant de reconfigurer les caméras.
+380|ReplayDeck — configuration rapide
+381|<span style='font-size:17px;font-weight:700'>Préparons le replay</span>
+382|Trois choix et c'est prêt. Tout peut être changé plus tard dans ⚙ Paramètres.
+383|<b>%1&nbsp;&nbsp;%2</b>
+384|Quelles caméras enregistrer ?
+385|Cochez les sources que le replay doit enregistrer (jusqu'à %1). Glissez pour changer l'ordre : la première cochée devient la caméra 1.
+386|  (scène)
+387|  · caméra
+388|+ Ajouter une caméra
+389|La caméra n'est pas encore dans OBS ? Créez ici sa source et sa scène
+390|Aucune source vidéo pour l'instant. Cliquez sur "+ Ajouter une caméra".
+391|Caméra %1  —
+392|Aucune caméra cochée.
+393|%1 caméra(s) cochée(s).
+394|  · nouvelle caméra
+395|Où enregistrer les fichiers ?
+396|Utilisez le disque le plus rapide et le plus spacieux (de préférence un SSD).
+397|Choisir…
+398|Dossier des enregistrements
+399|Haute  ★ recommandée
+400|Maximale  (utilise plus de disque)
+401|Légère  (économise le disque, PC plus modeste)
+402|Créer la scène "Replay" avec le replay déjà placé (canal A)
+403|Scène avec le replay : existe déjà ✓
+404|Commencer à enregistrer maintenant
+405|Pas maintenant
+406|Terminer ✓
+407|Cochez au moins une caméra.
+408|Impossible d'utiliser ce dossier. Choisissez-en un autre.
+409|Désactivé
+410|port %1 occupé (vMix est-il ouvert sur ce PC ?)
+411|port TCP %1 occupé
+412|Activé — adresse : %1, port %2 (TCP %3)
+413|Erreur :
+414|Texte
+415|élément
+416|Image
+417|Scène "%1" créée : %2 images et %3 textes.\nLes images ont été enregistrées dans :\n%4\n\nLes animations du GT ne sont pas converties — pour elles, utilisez la source "ReplayDeck GT".
+418|impossible d'ouvrir
+419|fichier .gtzip invalide
+420|le .gtzip n'a pas de document.xml (fichiers : %1)
+421|%1 sans <Composition> — racine : <%2>%3 — début : %4
+422|＋ Importer
+423|Importe des titres vMix GT (.gtzip) dans cette liste — sans créer de scènes
+424|Chercher un titre…
+425|Convertir un .gtzip en scène OBS (sans animation)…
+426|Afficher en liste
+427|Afficher en grille, avec miniature
+428|Retirer le titre "%1" de la liste ?
+429|Le titre "%1" est une source de scène.\nRetirer la source de toutes les scènes ?
+430|Nouveau nom du titre :
+431|Une source ou un titre nommé "%1" existe déjà.
+432|Nom de la copie (le même GT avec d'autres données).\nEx. : COMPO DOMICILE / COMPO EXTÉRIEUR
+433| EXTÉRIEUR
+434|Aucun titre avec "%1".
+435|Aucun titre pour l'instant.\nCliquez sur ＋ Importer et choisissez des fichiers .gtzip de vMix.
+436|✎  Modifier le titre (texte, images, couleurs, disposition)
+437|Aa  Renommer…
+438|⧉  Dupliquer (même GT, autres données — ex. : domicile et extérieur)…
+439|⚙  Propriétés de la source
+440|✕  Retirer le titre
+441|Scène
+442|Où le titre entre : dans un canal d'overlay (O1–O8, au-dessus du programme)\nou "Scène" (anime seulement ; le titre doit être dans la scène du programme)
+443|■  SORTIE
+444|▶  ENTRÉE
+445|Importer des titres vMix GT
+446|Titres GT (*.gtzip)
+447|Impossible de lire : %1\nVoir la raison dans Aide → Fichiers journaux (lignes "GT:").
+448|Convertir un titre GT en scène
+449|Éditeur de titre : %1
+450|Images
+451|Couleur
+452|Disposition
+453|Activé : chaque modification va directement au titre.\nDésactivé : utilisez Appliquer.
+454|●  Direct
+455|Parcourir…
+456|Image d'origine
+457|Sans image
+458|Choisir une image
+459|Images (*.png *.jpg *.jpeg *.bmp *.gif *.webp *.tga)
+460|Couleur (#AARRGGBB) :
+461|Appliquer
+462|▶ ENTRÉE
+463|← SORTIE
+464|Effacer
+465|Importation
+466|Exportation
+467|Enregistre les valeurs actuelles comme preset
+468|Supprime le preset sélectionné
+469|Remet tous les champs à l'original du fichier
+470|<b>Presets</b>
+471|Double-clic pour appliquer le preset
+472|Nouveau preset
+473|Nom :
+474|Exporter les presets
+475|Feuille CSV (*.csv);;Texte (*.txt);;JSON (*.json)
+476|Importer des presets
+477|Presets (*.csv *.txt *.json);;Feuille CSV (*.csv);;Texte (*.txt);;JSON (*.json)
+478|%1 preset(s) importé(s).
+479|Aucune ligne reconnue dans le fichier.
+480|(sans image)
+481|Original :
+482|<b>Calque :</b> %1<br><small>ce qui dépasse du calque n'apparaît pas</small>
+483|<b>Élément :</b> %1<br><small>calque %2 — position relative au calque</small>
+484|Position
+485|Rotation
+486|Visible
+487|Opacité
+488|Taille de police
+489|Graisse
+490|Italique
+491|Alignement
+492|Vertical
+493|Interligne
+494|Couleur du texte
+495|Remplissage
+496|image — changez-la dans l'onglet Images
+497|Coins arrondis
+498|Contour (épaisseur)
+499|Contour (couleur)
+500|Ajustement de l'image
+501|Restaurer la position et le style d'origine
+502|Choisissez d'abord le fichier .gtzip dans les propriétés de la source.
+503|ReplayDeck GT (titre .gtzip)
+504|Fichier du titre
+505|Animer l'entrée au passage à l'antenne (et l'afficher figé dans l'aperçu)
+506|✎ Modifier le titre (Texte / Images / Couleur)

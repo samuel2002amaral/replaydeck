@@ -1,0 +1,506 @@
+ReplayDeck (captura)
+Escolha a pasta de gravação em Configurar.
+Vídeo do OBS não inicializado.
+Não foi possível criar a pasta %1
+Câmera %1: %2
+Nenhuma câmera configurada.
+É a gravação em andamento.
+Limite de disco: %1 gravação(ões) antiga(s) apagada(s)
+Gravação parada: o disco chegou ao espaço livre mínimo (%1 GB)
+Exportando…
+gravação não encontrada
+Exportando… %1
+%1 clipe(s) exportado(s) em %2
+ — %1 com erro: %2
+Overlays
+Tirar todos
+Tira todos os overlays do ar
+Escolhe a fonte e a transição de cada overlay (ou botão direito num overlay)
+Overlay %1: vazio — clique para escolher a fonte
+Overlay %1: %2\nClique liga/desliga • botão direito configura
+Canais de overlay
+<b>Fonte ou cena</b>
+<b>Transição</b>
+<b>Duração</b>
+Nenhuma
+ (não encontrada)
+Corte
+Fade
+Stingers usam a duração do próprio gráfico
+Salvar
+Cancelar
+Replay: iniciar/parar gravação
+Replay: play
+Replay: ligar/desligar reverso
+Replay: pausa
+Replay: play/pausa
+Replay: fast forward (2x/4x/8x/16x)
+Replay: voltar ao vivo
+Replay: quadro anterior
+Replay: próximo quadro
+Replay: voltar 1 s
+Replay: avançar 1 s
+Replay: voltar 5 s
+Replay: avançar 5 s
+Replay: Mark In
+Replay: Mark Out
+Replay: evento automático 5 s
+Replay: evento automático 10 s
+Replay: evento automático 20 s
+Replay: tocar último evento (inicia / encerra)
+Replay: Play Events (inicia / encerra)
+Replay: voltar ao início do clipe
+Replay: ligar/desligar Loop
+Replay: ligar/desligar áudio do replay
+Replay: exportar eventos da lista
+Replay: pôr no ar (transição de entrada)
+Replay: tirar do ar (volta à cena anterior)
+Replay: selecionar canal A
+Replay: selecionar canal B
+Replay: selecionar A+B (sincronizados)
+Replay: sincronizar B com A
+Replay: zoom — aproximar (segure)
+Replay: zoom — afastar (segure)
+Replay: zoom — mover para a esquerda (segure)
+Replay: zoom — mover para a direita (segure)
+Replay: zoom — mover para cima (segure)
+Replay: zoom — mover para baixo (segure)
+Replay: zoom — voltar à imagem inteira
+Replay: velocidade -5%
+Replay: velocidade +5%
+Replay: velocidade %1%
+Overlay %1: liga/desliga
+Replay: câmera %1
+ReplayDeck (overlays)
+ReplayDeck GT (títulos)
+Relógio e estado
+Seleção A+B / A / B
+Exportar
+Linha do tempo
+Evento anterior / próximo
+Reverso
+Avanço rápido
+Ao vivo
+IN / OUT
+Cancelar IN
+−5 / −10 / −20 s
+Velocidades
+Loop
+Áudio
+Zoom (aproximar e mover)
+Câmeras da saída A
+Câmeras da saída B
+Botão P (pré-visualizar saída)
+Último evento no ar
+Play Events
+Evento selecionado no ar
+Apagar evento selecionado
+Avisos (quadros perdidos, exportação…)
+Apagar TODO o cache do ReplayDeck?\n\n• %1 gravação(ões) — %2\n• os clipes exportados dentro delas\n• toda a lista de eventos\n• os arquivos temporários do plugin\n\n
+A gravação será PARADA antes.\n\n
+Configurações, títulos GT e overlays não são apagados. Não dá para desfazer.
+Limpar cache
+Liberado: %1\nNão foi possível apagar:\n%2
+Cache limpo: %1 liberados.
+Gravações do replay
+Gravação
+Tamanho
+Eventos
+● gravando agora
+<b>%1</b> em %2 gravação(ões) • livre no disco: <b>%3</b>%4
+ • limite: %1 GB
+Marcar antigas
+Marca todas, menos a mais recente e a que está gravando
+Abrir pasta
+Apagar marcadas
+Apagar gravações
+Apagar %1 gravação(ões) (%2)?\n%3 evento(s) delas saem da lista.\n\nNão dá para desfazer.
+Não foi possível apagar:\n
+Limpar todo o cache
+Apaga TODAS as gravações do replay (inclusive clipes exportados nelas),\na lista de eventos e os temporários do plugin. Para a gravação antes.
+Fechar
+Zoom: clique ou arraste para mover, rodinha para aproximar,\nduplo clique volta para a imagem inteira
+Zoom: 
+Zoom: volta para a imagem inteira
+esquerda (segure)
+cima (segure)
+baixo (segure)
+direita (segure)
+afastar (segure)
+aproximar (segure)
+Zoom: 1x a 5x
+Transporte (◀ ▶ ▶▶)
+IN / OUT e −5 / −10 / −20
+Loop e áudio
+Zoom
+Câmeras A / B
+Último no ar / Play Events
+Padrão — lista em cima, controles embaixo
+Controles em cima, lista embaixo
+Lado a lado — lista à esquerda, controles à direita
+Só controles (sem a lista de eventos)
+Quebra de linha — arraste; duplo clique remove
+Arraste para mudar o lugar deste grupo
+Configurar ReplayDeck
+Onde e como as câmeras são gravadas. Qualidade constante mantém a imagem igual em qualquer lance e só usa disco quando precisa.
+Câmeras e áudio
+No ar
+O que acontece quando o replay entra e sai do programa.
+Transições
+Marque as peças que quer no painel. As setas e o − / + funcionam segurando; nada sai da imagem. Atalhos: OBS → Configurações → Atalhos → "Replay: zoom".
+Mini-mapa (arrastar e rodinha)
+Barra deslizante
+Setas (cima, baixo, esquerda, direita)
+Botões − / + (aproximar e afastar)
+Botão 1x (imagem inteira)
+Setas:
+em linha
+em cruz
+Lugar no painel:
+Automático (cruz vai para a coluna à direita)
+Coluna à direita
+Junto com os botões
+<b>Como vai ficar no painel</b>
+Nada marcado: o zoom fica só nos atalhos.
+Layout do painel
+Nome dos grupos
+Sem nome
+Caixa com nome em cima
+Nome na borda
+Nome ao lado (vertical)
+Só o nome em cima (sem caixa)
+Só a caixa (sem nome)
+<b>Ordem dos botões</b> — arraste para mudar
+↵  quebra de linha
+▲ Subir
+▼ Descer
++ Quebra
+Quebra de linha: o que vem depois começa numa linha nova
+Tirar quebra
+✥ Organizar arrastando no painel
+Salva e fecha esta janela; no painel, arraste cada grupo para onde quiser
+<b>O que aparece</b> — tudo continua no atalho
+Voltar ao padrão
+Painel
+Disco
+Para o replay não encher o PC. As gravações mais antigas são apagadas primeiro (junto com os eventos delas); a que está gravando nunca é apagada.
+sem limite
+Tamanho máximo da pasta de gravações. Passou disso, apaga as mais antigas.
+Limite da pasta
+ GB livres
+desligado
+Se o disco ficar com menos que isso, apaga as gravações antigas;\nsem mais nada para apagar, para a gravação (o PC nunca enche).
+Espaço livre mínimo
+Ver e apagar gravações…
+Limpar todo o cache…
+Pare a gravação (●) para mudar
+App
+Controle por celular/tablet: o plugin responde como o vMix (porta 8088), então apps feitos para o vMix funcionam com o OBS.
+Procurar
+Pasta
+Vem de Configurações → Vídeo do OBS (cada câmera grava no tamanho da própria fonte)
+Máxima — qualidade constante
+Alta — qualidade constante  ★ recomendada
+Equilibrada — qualidade constante
+Taxa fixa 40 Mbps
+Taxa fixa 80 Mbps
+Taxa fixa 144 Mbps
+Taxa fixa 220 Mbps
+Qualidade constante: todos os quadros com a mesma nitidez (inclusive lances rápidos);\no disco usado varia com a imagem. Taxa fixa: uso de disco previsível.
+Qualidade constante QP %1
+Taxa fixa %1 Mbps
+Formato
+Qualidade
+Automático (NVENC → QSV → AMF → MJPEG)
+Encoder
+Câmeras
+Configuração rápida…
+Assistente: marca as câmeras, escolhe a pasta e cria a cena Replay
++ Adicionar câmera…
+Cria a fonte da câmera (e uma cena com ela) e abre as propriedades do OBS
+Trilha %1 do OBS
+Canais 1-2
+Canais 3-4
+Áudio gravado
+Áudio do replay
+Automático (cena com a saída A)
+Cena que vai ao ar quando o replay toca (precisa ter a fonte "ReplayDeck (saída)")
+Cena do replay
+Transição atual do OBS
+duração do OBS
+Stinger usa a duração do próprio vídeo
+Entrada
+Saída
+Fade (mix)
+Fade para preto
+Transição do OBS (GT Stinger, Stinger…)
+Acompanhar a velocidade do replay
+Em câmera lenta a transição também fica mais lenta
+Entre eventos
+Transição criada em "Transições de cena" do OBS (por exemplo um GT Stinger), usada na virada entre eventos
+começa 
+Quanto tempo antes da troca de evento a transição começa — use o tempo que o gráfico leva para cobrir a tela
+duração 
+Só vale para transições sem duração própria; stingers usam a duração do gráfico
+Transição do OBS
+Stinger da troca de cena passa por cima dos overlays e títulos
+Ligado: o gráfico do stinger cobre os overlays (O1–O8) e os títulos GT durante a transição.\nDesligado: os overlays e títulos ficam sempre por cima, inclusive do stinger.
+Stinger
+Lista inteira
+A partir do evento selecionado
+Só o evento selecionado
+Play Events toca
+Câmera lenta suave — mistura os quadros vizinhos (menos "tremido" em 25–50%)
+Desligado: cada quadro gravado é repetido (imagem mais nítida, movimento em degraus).\nLigado: entre dois quadros mostra a mistura dos dois (movimento contínuo).
+Câmera lenta
+⟲ e Play Events trocam para a cena do replay
+Voltar para a cena anterior quando o clipe terminar, depois de
+Automático
+Ligado
+porta 
+TCP 
+Só deste computador
+Desmarcado: o app pode estar em outro PC/celular da mesma rede
+Controle pelo app
+No app (Painel vMix), em Ajustes, use este endereço e porta no lugar do vMix.\nInputs do app = cenas, títulos GT, fontes e o Replay do OBS.
+Escolha uma pasta de gravação
+Escolha pelo menos uma câmera
+%1 de gravação disponível para %2 câmera(s) · ~%3 Mbps cada
+%1 GB usados nesta pasta de replays
+Pasta da sessão
+Idioma do plugin
+Automático (idioma do OBS)
+● GRAVAR
+Inicia/para a gravação contínua das câmeras (sem ela não há replay)
+Zoom ativo na saída — clique em 1x para voltar à imagem inteira
+Tempo de gravação que ainda cabe no disco, pelo ritmo atual
+Comanda as saídas A e B ao mesmo tempo
+Comanda só a saída A
+Comanda só a saída B
+Exportar: salva eventos como vídeo (MP4), sem recompressão
+Exportar evento selecionado
+Exportar todos os eventos
+Configurações: câmeras, gravação, zoom, painel, transições e app
+<b>Organizar:</b> arraste os grupos. <b>Posição livre</b> = solte em qualquer ponto (não deixa cobrir outro grupo); senão, um ao lado do outro com ↵ quebras de linha.
+Posição livre
+Ligado: cada grupo fica exatamente onde você soltar
++ Quebra de linha
+Começa uma linha nova a partir daqui
+Padrão
+Volta à ordem original
+Concluir
+Arraste para achar qualquer momento da gravação
+Evento anterior
+Próximo evento
+Reprodução reversa (liga/desliga)
+Play / pausa
+Avanço rápido (2x, 4x…)
+REPRODUÇÃO
+AO VIVO
+Volta as saídas selecionadas para o ponto ao vivo
+SAÍDA
+IN
+Mark In: marca o início de um evento
+OUT
+Mark Out: fecha o evento
+✕ IN
+Cancela o IN marcado
+Cria um evento com os últimos %1 s e para no início dele
+MARCAR
+Velocidade de reprodução %1%
+Velocidade (%)
+VELOCIDADE
+Repete o clipe (ou a sequência do Play Events) sem parar
+Liga/desliga o áudio original durante o replay
+REPETIR · ÁUDIO
+ZOOM
+Leva a cena da saída %1 para a pré-visualização do OBS
+CÂMERAS
+⟲ Último no ar
+Troca para a cena do replay, toca o último evento e volta.\nClique de novo para encerrar antes do fim.
+▶▶ Play Events
+Põe no ar e toca os eventos em sequência (o que tocar é definido na ⚙).\nClique de novo para encerrar antes do fim.
+▶ Selecionado no ar
+Põe no ar e toca o evento selecionado (todos os ângulos marcados) e volta
+Apaga o evento selecionado
+Apagar o evento %1?
+NO AR
+Evento
+Duração
+Veloc.
+Saída %1: câmera %2%3 (mesmo instante, outro ângulo)
+Nenhuma cena tem a fonte "ReplayDeck (saída)" no canal %1
+O botão P usa o Modo Estúdio do OBS — ative-o para ter Preview
+Cena "%1" criada com o replay (canal A)
+Pronto! Marque IN/OUT ou use ◀◀ para ver o lance
+❚❚ PAUSA
+ZOOM %1x
+RESTAM %1
+%1 quadros perdidos
+IN marcado: aperte OUT para fechar o evento
+⚙ para configurar, ● para gravar
+In %1 — Out %2
+Velocidade própria deste evento (ex.: 50). "-" usa a velocidade atual
+Marque os ângulos deste evento; dê dois cliques para escrever um comentário
+ReplayDeck (quadros)
+ReplayDeck (saída)
+Canal de replay
+Canal A
+Canal B
+Dispositivo de captura de vídeo (webcam, placa de captura)
+Dispositivo de captura de vídeo (V4L2)
+Dispositivo de captura de vídeo
+Blackmagic DeckLink
+AJA
+NDI
+Câmera IP / SRT / RTMP (endereço)
+Captura de jogo (eSports)
+Captura de monitor
+Captura de janela
+Captura de tela
+Mídia (arquivo de vídeo — bom para testar)
+Câmera %1
+Adicionar câmera
+Cria a fonte da câmera e uma cena só com ela. Depois o OBS abre as propriedades para você escolher o aparelho.
+Nenhum tipo de câmera disponível neste OBS.
+Outra fonte do OBS…
+Tipo
+Fonte
+Nome
+rtsp://usuario:senha@192.168.0.50:554/stream  ou  srt://...
+Endereço
+Criar também uma cena com esta câmera
+Criar câmera
+Já existe uma fonte ou cena com esse nome.
+Informe o endereço da câmera.
+Não foi possível criar a câmera.
+Cena 
+%1 GB livres neste disco
+Pare a gravação (●) antes de reconfigurar as câmeras.
+ReplayDeck — configuração rápida
+<span style='font-size:17px;font-weight:700'>Vamos deixar o replay pronto</span>
+Três escolhas e pronto. Dá para mudar tudo depois em ⚙ Configurar.
+<b>%1&nbsp;&nbsp;%2</b>
+Quais câmeras gravar?
+Marque as fontes que o replay deve gravar (até %1). Arraste para mudar a ordem: a primeira marcada vira a câmera 1.
+  (cena)
+  · câmera
++ Adicionar câmera
+A câmera ainda não está no OBS? Crie aqui a fonte e a cena dela
+Nenhuma fonte de vídeo ainda. Clique em "+ Adicionar câmera".
+Câmera %1  —  
+Nenhuma câmera marcada.
+%1 câmera(s) marcada(s).
+  · câmera nova
+Onde salvar as gravações?
+Use o disco mais rápido e com mais espaço (de preferência SSD).
+Escolher…
+Pasta das gravações
+Alta  ★ recomendada
+Máxima  (usa mais disco)
+Leve  (economiza disco, PC mais simples)
+Criar a cena "Replay" com o replay já posicionado (canal A)
+Cena com o replay: já existe ✓
+Começar a gravar agora
+Agora não
+Concluir ✓
+Marque pelo menos uma câmera.
+Não foi possível usar essa pasta. Escolha outra.
+Desligado
+porta %1 ocupada (o vMix está aberto neste PC?)
+porta TCP %1 ocupada
+Ligado — endereço: %1, porta %2 (TCP %3)
+Erro: 
+Texto
+elemento
+Imagem
+Cena "%1" criada: %2 imagens e %3 textos.\nAs imagens foram salvas em:\n%4\n\nAs animações do GT não são convertidas — para elas, use a fonte "ReplayDeck GT".
+não foi possível abrir 
+arquivo .gtzip inválido
+o .gtzip não tem document.xml (arquivos: %1)
+%1 sem <Composition> — raiz: <%2>%3 — início: %4
+＋ Importar
+Importa títulos do vMix GT (.gtzip) para esta lista — sem criar cenas
+Buscar título…
+Converter .gtzip em cena do OBS (sem animação)…
+Exibir em lista
+Exibir em grade, com miniatura
+Remover o título "%1" da lista?
+O título "%1" é uma fonte de cena.\nRemover a fonte de todas as cenas?
+Novo nome do título:
+Já existe uma fonte ou título chamado "%1".
+Nome da cópia (o mesmo GT com outros dados).\nEx.: ESCALAÇÃO CASA / ESCALAÇÃO FORA
+ FORA
+Nenhum título com "%1".
+Nenhum título ainda.\nClique em ＋ Importar e escolha arquivos .gtzip do vMix.
+✎  Editar título (texto, imagens, cores, layout)
+Aa  Renomear…
+⧉  Duplicar (mesmo GT, outros dados — ex.: casa e fora)…
+⚙  Propriedades da fonte
+✕  Remover título
+Cena
+Onde o título entra: num canal de overlay (O1–O8, por cima do programa)\nou "Cena" (só anima, o título precisa estar na cena do programa)
+■  SAÍDA
+▶  ENTRADA
+Importar títulos do vMix GT
+Títulos GT (*.gtzip)
+Não foi possível ler: %1\nVeja o motivo em Ajuda → Arquivos de log (linhas "GT:").
+Converter título GT em cena
+Editor de título: %1
+Imagens
+Cor
+Layout
+Ligado: cada alteração vai na hora para o título.\nDesligado: use Aplicar.
+●  Ao vivo
+Procurar…
+Imagem original
+Sem imagem
+Escolher imagem
+Imagens (*.png *.jpg *.jpeg *.bmp *.gif *.webp *.tga)
+Cor (#AARRGGBB):
+Aplicar
+▶ ENTRADA
+← SAÍDA
+Limpar
+Importação
+Exportação
+Salva os valores atuais como preset
+Apaga o preset selecionado
+Volta todos os campos para o original do arquivo
+<b>Presets</b>
+Dois cliques aplicam o preset
+Novo preset
+Nome:
+Exportar presets
+Planilha CSV (*.csv);;Texto (*.txt);;JSON (*.json)
+Importar presets
+Presets (*.csv *.txt *.json);;Planilha CSV (*.csv);;Texto (*.txt);;JSON (*.json)
+%1 preset(s) importado(s).
+Nenhuma linha reconhecida no arquivo.
+(sem imagem)
+Original: 
+<b>Camada:</b> %1<br><small>o que sair da camada não aparece</small>
+<b>Elemento:</b> %1<br><small>camada %2 — posição relativa à camada</small>
+Posição
+Rotação
+Visível
+Opacidade
+Tamanho da fonte
+Peso
+Itálico
+Alinhamento
+Vertical
+Espaço entre linhas
+Cor do texto
+Preenchimento
+imagem — troque na aba Imagens
+Cantos arredondados
+Contorno (espessura)
+Contorno (cor)
+Ajuste da imagem
+Restaurar posição e estilo originais
+Escolha primeiro o arquivo .gtzip nas propriedades da fonte.
+ReplayDeck GT (título .gtzip)
+Arquivo do título
+Animar a entrada quando for ao ar (e mostrar parado na prévia)
+✎ Editar título (Texto / Imagens / Cor)
