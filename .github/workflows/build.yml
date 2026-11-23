@@ -16,12 +16,15 @@ permissions:
 
 jobs:
   windows:
-    name: windows (OBS 30.0+ Universal)
+    name: windows (OBS ${{ matrix.obs }})
     strategy:
       fail-fast: false
       matrix:
         include:
           - { obs: "30.0.2", major: 30, runner: windows-2022, oldcmake: true }
+          - { obs: "31.0.4", major: 31, runner: windows-2022, oldcmake: true }
+          - { obs: "32.0.4", major: 32, runner: windows-2022, oldcmake: true }
+          - { obs: "33.0.1", major: 33, runner: windows-2025-vs2026, oldcmake: false }
     runs-on: ${{ matrix.runner }}
     defaults:
       run:
@@ -31,7 +34,7 @@ jobs:
         with:
           path: plugin
 
-      - name: CMake 3.30 (o código do OBS 30 não aceita o CMake 4)
+      - name: CMake 3.30 (o código do OBS antigo não aceita o CMake 4)
         if: matrix.oldcmake
         run: |
           python -m pip install --quiet "cmake==3.30.5"
@@ -92,29 +95,31 @@ jobs:
 
       - uses: actions/download-artifact@v7
         with:
-          name: win-obs30
+          pattern: win-obs*
           path: builds
 
       - name: Montar os arquivos
         run: |
           $v = (Select-String -Path plugin/CMakeLists.txt -Pattern 'project\(ReplayDeck VERSION ([0-9.]+)').Matches[0].Groups[1].Value
           "RD_VERSION=$v" | Out-File -Append $env:GITHUB_ENV
-          New-Item -ItemType Directory -Force dist, pkg-win/bin/64bit, pkg-win/data, zip/replaydeck/bin/64bit, zip/replaydeck/data, pdb | Out-Null
+          New-Item -ItemType Directory -Force dist, pkg-win/data, zip/replaydeck/bin/64bit, zip/replaydeck/data, zip/outras-versoes-do-obs, pdb | Out-Null
 
-          $dll = Get-ChildItem -Recurse builds -Filter replaydeck.dll | Select-Object -First 1
-          $pdb = Get-ChildItem -Recurse builds -Filter replaydeck.pdb | Select-Object -First 1
-          if (-not $dll) { throw "DLL não encontrada em builds" }
-
-          # Pacote universal (OBS 30.0+)
-          Copy-Item $dll.FullName "pkg-win/bin/64bit/"
-          Copy-Item -Recurse plugin/data/* "pkg-win/data/"
-          if ($pdb) {
-            Copy-Item $pdb.FullName "pdb/replaydeck.pdb"
+          foreach ($m in 30, 31, 32, 33) {
+            New-Item -ItemType Directory -Force "pkg-win/obs$m" | Out-Null
+            Copy-Item "builds/win-obs$m/replaydeck.dll" "pkg-win/obs$m/"
+            if (Test-Path "builds/win-obs$m/replaydeck.pdb") {
+              Copy-Item "builds/win-obs$m/replaydeck.pdb" "pdb/replaydeck-obs$m.pdb"
+            }
           }
+          Copy-Item -Recurse plugin/data/* pkg-win/data/
 
-          # Zip manual direto
-          Copy-Item $dll.FullName "zip/replaydeck/bin/64bit/"
+          # Zip manual: OBS 32/33 por padrão + subpastas para OBS 30 e 31
+          Copy-Item "builds/win-obs33/replaydeck.dll" "zip/replaydeck/bin/64bit/"
           Copy-Item -Recurse plugin/data/* "zip/replaydeck/data/"
+          foreach ($m in 30, 31, 32) {
+            New-Item -ItemType Directory -Force "zip/outras-versoes-do-obs/obs-$m" | Out-Null
+            Copy-Item "builds/win-obs$m/replaydeck.dll" "zip/outras-versoes-do-obs/obs-$m/"
+          }
           Copy-Item plugin/installer/README-windows.txt zip/README.txt
           Compress-Archive -Path zip/* -DestinationPath "dist/replaydeck-$v-windows.zip"
           if (Get-ChildItem pdb) {
