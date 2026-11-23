@@ -125,7 +125,7 @@ jobs:
             New-Item -ItemType Directory -Force "zip/outras-versoes-do-obs/obs-$m" | Out-Null
             Copy-Item "builds/win-obs$m/replaydeck.dll" "zip/outras-versoes-do-obs/obs-$m/"
           }
-          Copy-Item plugin/installer/LEIA-ME-windows.txt zip/LEIA-ME.txt
+          Copy-Item plugin/installer/README-windows.txt zip/LEIA-ME.txt
           Copy-Item plugin/installer/README-windows.txt zip/README.txt
           Compress-Archive -Path zip/* -DestinationPath "dist/replaydeck-$v-windows.zip"
           Compress-Archive -Path pdb/* -DestinationPath "dist/replaydeck-$v-windows-simbolos-pdb.zip"
@@ -147,7 +147,7 @@ jobs:
           $src = (Resolve-Path "pkg-win").Path
           & $iscc.FullName "/DMyVersion=$($env:RD_VERSION)" "/DSrcDir=$src" "/O$PWD/inst" plugin/installer/replaydeck.iss
           if ($LASTEXITCODE -ne 0) { throw "falha no instalador" }
-          Copy-Item plugin/installer/LEIA-ME-windows.txt inst/LEIA-ME.txt
+          Copy-Item plugin/installer/README-windows.txt inst/LEIA-ME.txt
           Copy-Item plugin/installer/README-windows.txt inst/README.txt
           Compress-Archive -Path inst/* -DestinationPath "dist/replaydeck-$($env:RD_VERSION)-windows-installer.zip"
 
@@ -182,7 +182,7 @@ jobs:
           cp -r data/* $P/data/
           cp installer/install-linux.sh pkg/instalar.sh
           chmod +x pkg/instalar.sh
-          cp installer/LEIA-ME-linux.txt pkg/LEIA-ME.txt
+          cp installer/README-linux.txt pkg/LEIA-ME.txt
           cp installer/README-linux.txt pkg/README.txt
           (cd pkg && zip -qr ../dist/replaydeck-$RD_VERSION-linux.zip .)
 
@@ -297,7 +297,7 @@ jobs:
           ls pkg/versoes
           cp plugin/installer/install-macos.command pkg/Instalar.command
           chmod +x pkg/Instalar.command
-          cp plugin/installer/LEIA-ME-macos.txt pkg/LEIA-ME.txt
+          cp plugin/installer/README-macos.txt pkg/LEIA-ME.txt
           cp plugin/installer/README-macos.txt pkg/README.txt
           (cd pkg && ditto -c -k --sequesterRsrc . ../dist/replaydeck-$V-macos.zip)
 
