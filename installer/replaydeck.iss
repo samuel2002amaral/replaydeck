@@ -1,11 +1,10 @@
-﻿; Instalador do ReplayDeck (Inno Setup 6)
-; Compilado no GitHub Actions:  iscc /DMyVersion=1.0.0 /DSrcDir=<pasta do plugin> replaydeck.iss
+; Instalador do ReplayDeck (Inno Setup 6)
+; Compilado no GitHub Actions: iscc /DMyVersion=1.0.0 /DSrcDir=<pasta do plugin> replaydeck.iss
 
 #ifndef MyVersion
   #define MyVersion "1.0.0"
 #endif
 #ifndef SrcDir
-  ; SrcDir\obs30 .. obs33\replaydeck.dll (uma DLL por versão do OBS) e SrcDir\data
   #define SrcDir "..\pkg-win"
 #endif
 #define MyName "ReplayDeck"
@@ -35,7 +34,6 @@ CloseApplications=no
 ShowLanguageDialog=auto
 
 [Languages]
-; abre no idioma do Windows (Configurações do Windows → Idioma)
 Name: "en"; MessagesFile: "compiler:Default.isl"
 Name: "pt"; MessagesFile: "compiler:Languages\BrazilianPortuguese.isl"
 Name: "es"; MessagesFile: "compiler:Languages\Spanish.isl"
@@ -52,15 +50,11 @@ Name: "zh"; MessagesFile: "compiler:Languages\ChineseSimplified.isl"
 #endif
 
 [Files]
-; o OBS recusa plugin compilado para versão mais nova que ele: instala a DLL da versão do OBS encontrado
-Source: "{#SrcDir}\obs30\{#PluginFolder}.dll"; DestDir: "{code:GetBinDir}"; Flags: ignoreversion; Check: UseBuild(30)
-Source: "{#SrcDir}\obs31\{#PluginFolder}.dll"; DestDir: "{code:GetBinDir}"; Flags: ignoreversion; Check: UseBuild(31)
-Source: "{#SrcDir}\obs32\{#PluginFolder}.dll"; DestDir: "{code:GetBinDir}"; Flags: ignoreversion; Check: UseBuild(32)
-Source: "{#SrcDir}\obs33\{#PluginFolder}.dll"; DestDir: "{code:GetBinDir}"; Flags: ignoreversion; Check: UseBuild(33)
+; DLL universal compilada contra OBS 30.0+ (compatível com OBS 30, 31, 32, 33+)
+Source: "{#SrcDir}\bin\64bit\{#PluginFolder}.dll"; DestDir: "{code:GetBinDir}"; Flags: ignoreversion
 Source: "{#SrcDir}\data\*"; DestDir: "{code:GetDataDir}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [InstallDelete]
-; jeitos antigos de instalar (Instant Replay e ReplayDeck 1.0.0): tirar para o OBS não carregar dois
 Type: filesandordirs; Name: "{code:OldPath|1}"
 Type: filesandordirs; Name: "{code:OldPath|2}"
 Type: filesandordirs; Name: "{code:OldPath|3}"
@@ -252,10 +246,8 @@ end;
 function GetPluginDir(Param: String): String;
 begin
   if (ModePage <> nil) and (ModePage.SelectedValueIndex = 1) then
-    { OBS portátil: a DLL vai em <pasta do OBS>\obs-plugins\64bit }
     Result := AddBackslash(PortablePage.Values[0]) + 'data\obs-plugins\{#PluginFolder}'
   else
-    { OBS instalado: C:\ProgramData\obs-studio\plugins\replaydeck }
     Result := ExpandConstant('{commonappdata}\obs-studio\plugins\{#PluginFolder}');
 end;
 
@@ -269,7 +261,6 @@ begin
   Result := AddBackslash(PortablePage.Values[0]);
 end;
 
-{ jeito de instalar que o OBS 28 até o 33 entendem }
 function GetBinDir(Param: String): String;
 begin
   if IsPortable() then
@@ -286,7 +277,6 @@ begin
     Result := ExpandConstant('{commonappdata}\obs-studio\plugins\{#PluginFolder}\data');
 end;
 
-{ instalações antigas a remover; caminho que não existe quando não se aplica }
 function OldPath(Param: String): String;
 var
   pd: String;
@@ -304,7 +294,6 @@ begin
   end;
 end;
 
-{ versão principal do OBS escolhido (30, 31...), 0 se não deu para ler }
 function ObsMajor(): Integer;
 var
   exe, v: String;
@@ -333,17 +322,6 @@ begin
     exe := AddBackslash(ObsInstalledDir()) + 'bin\64bit\obs64.exe';
   if GetVersionNumbersString(exe, v) then
     Result := v;
-end;
-
-{ qual DLL usar: a da versão do OBS; mais novo que 33 ou desconhecido usa a do 33 }
-function UseBuild(Major: Integer): Boolean;
-var
-  m: Integer;
-begin
-  m := ObsMajor();
-  if (m <= 0) or (m > 33) then
-    m := 33;
-  Result := (m = Major);
 end;
 
 procedure InitializeWizard;

@@ -1,12 +1,5 @@
 name: Build
 
-# Builds ReplayDeck for Windows, macOS and Linux on every push.
-# A commit message containing [release] (or a manual run with oficial=true)
-# publishes "ReplayDeck <version from CMakeLists.txt>" (tag vX.Y.Z) on the Releases page.
-#
-# O OBS recusa plugin compilado com uma versão mais nova que ele, e cada versão traz o seu
-# FFmpeg/Qt. Por isso Windows e Mac são compilados uma vez para cada versão principal do OBS
-# (30, 31, 32, 33) e o instalador escolhe a certa. O Linux já usa o libobs 30 do Ubuntu.
 on:
   push:
     branches: [main]
@@ -23,15 +16,12 @@ permissions:
 
 jobs:
   windows:
-    name: windows (OBS ${{ matrix.obs }})
+    name: windows (OBS 30.0+ Universal)
     strategy:
       fail-fast: false
       matrix:
         include:
           - { obs: "30.0.2", major: 30, runner: windows-2022, oldcmake: true }
-          - { obs: "31.0.4", major: 31, runner: windows-2022, oldcmake: true }
-          - { obs: "32.0.4", major: 32, runner: windows-2022, oldcmake: true }
-          - { obs: "33.0.1", major: 33, runner: windows-2025-vs2026, oldcmake: false }
     runs-on: ${{ matrix.runner }}
     defaults:
       run:
@@ -41,7 +31,7 @@ jobs:
         with:
           path: plugin
 
-      - name: CMake 3.30 (o código do OBS antigo não aceita o CMake 4)
+      - name: CMake 3.30 (o código do OBS 30 não aceita o CMake 4)
         if: matrix.oldcmake
         run: |
           python -m pip install --quiet "cmake==3.30.5"
@@ -60,7 +50,6 @@ jobs:
           $f = "obs/plugins/CMakeLists.txt"
           $c = Get-Content $f -Raw
           if ($c -match 'OBS_CMAKE_VERSION VERSION_GREATER_EQUAL 3\.0\.0') {
-            # OBS 30: o fim do arquivo é o CMake antigo; entra junto dos outros plugins
             $i = $c.IndexOf("add_subdirectory(aja)")
             $c = $c.Insert($i, "add_subdirectory(replaydeck)`n  ")
           } else {
@@ -110,22 +99,18 @@ jobs:
         run: |
           $v = (Select-String -Path plugin/CMakeLists.txt -Pattern 'project\(ReplayDeck VERSION ([0-9.]+)').Matches[0].Groups[1].Value
           "RD_VERSION=$v" | Out-File -Append $env:GITHUB_ENV
-          New-Item -ItemType Directory -Force dist, pkg-win/data, zip/replaydeck/bin/64bit, zip/replaydeck/data, zip/outras-versoes-do-obs, pdb | Out-Null
-          # instalador: uma DLL por versão do OBS + data
-          foreach ($m in 30, 31, 32, 33) {
-            New-Item -ItemType Directory -Force "pkg-win/obs$m" | Out-Null
-            Copy-Item "builds/win-obs$m/replaydeck.dll" "pkg-win/obs$m/"
-            if (Test-Path "builds/win-obs$m/replaydeck.pdb") { Copy-Item "builds/win-obs$m/replaydeck.pdb" "pdb/replaydeck-obs$m.pdb" }
+          New-Item -ItemType Directory -Force dist, pkg-win/bin/64bit, pkg-win/data, zip/replaydeck/bin/64bit, zip/replaydeck/data, pdb | Out-Null
+
+          # Pacote universal (OBS 30.0+)
+          Copy-Item "builds/win-obs30/replaydeck.dll" "pkg-win/bin/64bit/"
+          Copy-Item -Recurse plugin/data/* "pkg-win/data/"
+          if (Test-Path "builds/win-obs30/replaydeck.pdb") {
+            Copy-Item "builds/win-obs30/replaydeck.pdb" "pdb/replaydeck.pdb"
           }
-          Copy-Item -Recurse plugin/data/* pkg-win/data/
-          # zip: pasta pronta (OBS 33+) e as DLLs das versões anteriores
-          Copy-Item builds/win-obs33/replaydeck.dll zip/replaydeck/bin/64bit/
-          Copy-Item -Recurse plugin/data/* zip/replaydeck/data/
-          foreach ($m in 30, 31, 32) {
-            New-Item -ItemType Directory -Force "zip/outras-versoes-do-obs/obs-$m" | Out-Null
-            Copy-Item "builds/win-obs$m/replaydeck.dll" "zip/outras-versoes-do-obs/obs-$m/"
-          }
-          Copy-Item plugin/installer/README-windows.txt zip/LEIA-ME.txt
+
+          # Zip manual direto
+          Copy-Item "builds/win-obs30/replaydeck.dll" "zip/replaydeck/bin/64bit/"
+          Copy-Item -Recurse plugin/data/* "zip/replaydeck/data/"
           Copy-Item plugin/installer/README-windows.txt zip/README.txt
           Compress-Archive -Path zip/* -DestinationPath "dist/replaydeck-$v-windows.zip"
           Compress-Archive -Path pdb/* -DestinationPath "dist/replaydeck-$v-windows-simbolos-pdb.zip"
@@ -135,19 +120,16 @@ jobs:
           choco install innosetup -y --no-progress | Out-Null
           $iscc = Get-ChildItem "C:\Program Files (x86)\Inno Setup 6\ISCC.exe", "C:\Program Files\Inno Setup 6\ISCC.exe" -ErrorAction SilentlyContinue | Select-Object -First 1
           if (-not $iscc) { throw "ISCC não encontrado" }
-          # coreano e chinês nem sempre vêm no Inno Setup: baixa do repositório oficial (se falhar, o instalador sai sem eles)
           $langDir = Join-Path (Split-Path $iscc.FullName) "Languages"
           foreach ($n in @("Korean.isl", "ChineseSimplified.isl")) {
             if (Test-Path "$langDir/$n") { continue }
             foreach ($sub in @("", "Unofficial/")) {
               try { Invoke-WebRequest "https://raw.githubusercontent.com/jrsoftware/issrc/main/Files/Languages/$sub$n" -OutFile "$langDir/$n" -ErrorAction Stop; break } catch { }
             }
-            if (Test-Path "$langDir/$n") { Write-Host "idioma $n baixado" } else { Write-Host "idioma $n indisponível" }
           }
           $src = (Resolve-Path "pkg-win").Path
           & $iscc.FullName "/DMyVersion=$($env:RD_VERSION)" "/DSrcDir=$src" "/O$PWD/inst" plugin/installer/replaydeck.iss
           if ($LASTEXITCODE -ne 0) { throw "falha no instalador" }
-          Copy-Item plugin/installer/README-windows.txt inst/LEIA-ME.txt
           Copy-Item plugin/installer/README-windows.txt inst/README.txt
           Compress-Archive -Path inst/* -DestinationPath "dist/replaydeck-$($env:RD_VERSION)-windows-installer.zip"
 
@@ -156,159 +138,9 @@ jobs:
           name: windows
           path: dist/*
 
-  linux:
-    runs-on: ubuntu-24.04
-    steps:
-      - uses: actions/checkout@v6
-
-      - name: Dependências (OBS, Qt 6 e FFmpeg do Ubuntu)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends libobs-dev qt6-base-dev qt6-base-dev-tools \
-            libavcodec-dev libavformat-dev libavutil-dev pkg-config g++
-
-      - name: Compilar
-        run: |
-          V=$(sed -n 's/^project(ReplayDeck VERSION \([0-9.]*\).*/\1/p' CMakeLists.txt)
-          echo "RD_VERSION=$V" >> $GITHUB_ENV
-          OUT=$PWD/build-linux OPT="-O2" VERSION=$V BUILD=${{ github.run_number }} tools/linux-build.sh
-          strip --strip-unneeded build-linux/replaydeck.so
-
-      - name: Empacotar
-        run: |
-          P=pkg/replaydeck
-          mkdir -p $P/bin/64bit $P/data dist
-          cp build-linux/replaydeck.so $P/bin/64bit/
-          cp -r data/* $P/data/
-          cp installer/install-linux.sh pkg/instalar.sh
-          chmod +x pkg/instalar.sh
-          cp installer/README-linux.txt pkg/LEIA-ME.txt
-          cp installer/README-linux.txt pkg/README.txt
-          (cd pkg && zip -qr ../dist/replaydeck-$RD_VERSION-linux.zip .)
-
-      - uses: actions/upload-artifact@v7
-        with:
-          name: linux
-          path: dist/*
-
-  macos:
-    name: macos (OBS ${{ matrix.obs }})
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - { obs: "30.0.2", major: 30, runner: macos-15, xcode: "16.4" }
-          - { obs: "31.0.4", major: 31, runner: macos-15, xcode: "16.4" }
-          - { obs: "32.0.4", major: 32, runner: macos-15, xcode: "16.4" }
-          - { obs: "33.0.1", major: 33, runner: macos-26, xcode: "26.5" }
-    runs-on: ${{ matrix.runner }}
-    defaults:
-      run:
-        shell: bash
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          path: plugin
-
-      - name: Xcode ${{ matrix.xcode }}
-        run: |
-          X=$(ls -d /Applications/Xcode_${{ matrix.xcode }}*.app 2>/dev/null | head -1)
-          if [ -n "$X" ]; then sudo xcode-select --switch "$X/Contents/Developer"; fi
-          xcodebuild -version
-          if [ ${{ matrix.major }} -lt 33 ]; then
-            # o código do OBS antigo não aceita o CMake 4
-            python3 -m venv "$RUNNER_TEMP/cm" && "$RUNNER_TEMP/cm/bin/pip" install -q "cmake==3.30.5"
-            echo "$RUNNER_TEMP/cm/bin" >> $GITHUB_PATH
-            "$RUNNER_TEMP/cm/bin/cmake" --version
-          fi
-
-      - name: Baixar código do OBS ${{ matrix.obs }}
-        run: |
-          git clone --depth 1 --branch ${{ matrix.obs }} --recursive --shallow-submodules https://github.com/obsproject/obs-studio.git obs
-          cp -R plugin obs/plugins/replaydeck
-          rm -rf obs/plugins/replaydeck/.git obs/plugins/replaydeck/app
-          python3 - <<'PY'
-          f = "obs/plugins/CMakeLists.txt"
-          c = open(f).read()
-          if "OBS_CMAKE_VERSION VERSION_GREATER_EQUAL 3.0.0" in c:
-              i = c.index("add_subdirectory(aja)")
-              c = c[:i] + "add_subdirectory(replaydeck)\n  " + c[i:]
-          else:
-              c += "\nadd_subdirectory(replaydeck)\n"
-          open(f, "w").write(c)
-          PY
-
-      - name: Compilar (Apple Silicon e Intel)
-        working-directory: obs
-        run: |
-          for A in arm64 x86_64; do
-            cmake --preset macos -B build_$A -DCMAKE_OSX_ARCHITECTURES=$A -DENABLE_BROWSER=OFF -DENABLE_WEBSOCKET=OFF \
-              -DCMAKE_COMPILE_WARNING_AS_ERROR=OFF -DPLUGIN_BUILD=${{ github.run_number }}
-            cmake --build build_$A --config RelWithDebInfo --target replaydeck -- ONLY_ACTIVE_ARCH=NO -quiet
-          done
-
-      - name: Juntar Apple Silicon e Intel
-        run: |
-          ARM=$(find obs/build_arm64 -type d -name replaydeck.plugin -path '*RelWithDebInfo*' | head -1)
-          X86=$(find obs/build_x86_64 -type d -name replaydeck.plugin -path '*RelWithDebInfo*' | head -1)
-          echo "arm64: $ARM"; echo "x86_64: $X86"
-          [ -d "$ARM" ] && [ -d "$X86" ] || { echo "pacote .plugin não encontrado"; exit 1; }
-          mkdir -p out
-          cp -R "$ARM" out/replaydeck.plugin
-          lipo -create "$ARM/Contents/MacOS/replaydeck" "$X86/Contents/MacOS/replaydeck" -output out/replaydeck.plugin/Contents/MacOS/replaydeck
-          mkdir -p out/replaydeck.plugin/Contents/Resources
-          cp -R plugin/data/* out/replaydeck.plugin/Contents/Resources/
-          lipo -info out/replaydeck.plugin/Contents/MacOS/replaydeck
-          otool -L out/replaydeck.plugin/Contents/MacOS/replaydeck | head -20
-          (cd out && tar czf ../mac-obs${{ matrix.major }}.tgz replaydeck.plugin)
-
-      - uses: actions/upload-artifact@v7
-        with:
-          name: mac-obs${{ matrix.major }}
-          path: mac-obs${{ matrix.major }}.tgz
-
-  macos-package:
-    needs: macos
-    if: always()
-    runs-on: macos-15
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          path: plugin
-
-      - uses: actions/download-artifact@v7
-        with:
-          pattern: mac-obs*
-          path: builds
-          merge-multiple: true
-
-      - name: Montar o zip do Mac
-        run: |
-          V=$(sed -n 's/^project(ReplayDeck VERSION \([0-9.]*\).*/\1/p' plugin/CMakeLists.txt)
-          ls builds
-          [ -n "$(ls builds/*.tgz 2>/dev/null)" ] || { echo "nenhuma versão do Mac compilou"; exit 1; }
-          mkdir -p pkg/versoes dist
-          for t in builds/mac-obs*.tgz; do
-            m=$(basename "$t" .tgz); m=${m#mac-obs}
-            mkdir -p "pkg/versoes/obs-$m"
-            tar xzf "$t" -C "pkg/versoes/obs-$m"
-            codesign --force --deep --sign - --timestamp=none "pkg/versoes/obs-$m/replaydeck.plugin"
-          done
-          ls pkg/versoes
-          cp plugin/installer/install-macos.command pkg/Instalar.command
-          chmod +x pkg/Instalar.command
-          cp plugin/installer/README-macos.txt pkg/LEIA-ME.txt
-          cp plugin/installer/README-macos.txt pkg/README.txt
-          (cd pkg && ditto -c -k --sequesterRsrc . ../dist/replaydeck-$V-macos.zip)
-
-      - uses: actions/upload-artifact@v7
-        with:
-          name: macos
-          path: dist/*
-
   release:
-    needs: [windows, windows-package, linux, macos, macos-package]
-    if: always() && needs.windows-package.result == 'success'
+    needs: [windows, windows-package]
+    if: needs.windows-package.result == 'success'
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
@@ -329,12 +161,8 @@ jobs:
           V=$(ls dist/*-windows.zip | sed -n 's/.*replaydeck-\(.*\)-windows.zip/\1/p')
           if [[ "$GITHUB_REF" == refs/tags/v* || "${{ github.event.inputs.oficial }}" == "true" || "$MSG" == *"[release]"* || "$MSG" == *"[oficial]"* ]]; then
             TAG=v$V
-            if [[ "${{ needs.linux.result }}" != success || "${{ needs.macos-package.result }}" != success ]]; then
-              echo "versão oficial precisa dos 3 sistemas"; exit 1
-            fi
-            # versão oficial: sem os símbolos de depuração
             FILES=$(ls dist/*.zip | grep -v simbolos)
-            gh release create "$TAG" $FILES --target "$GITHUB_SHA" --repo "$GITHUB_REPOSITORY" --title "ReplayDeck ${TAG#v}" \
+            gh release create "$TAG" $FILES --target "$GITHUB_SHA" --repo "$GITHUB_REPOSITORY" --title "ReplayDeck ${TAG#v} (Windows)" \
               --notes-file src/installer/release-notes.md --latest
           else
             echo "build only (no [release] in the commit message): nothing published"
