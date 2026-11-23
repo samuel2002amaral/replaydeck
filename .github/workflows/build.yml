@@ -92,7 +92,7 @@ jobs:
 
       - uses: actions/download-artifact@v7
         with:
-          pattern: win-obs*
+          name: win-obs30
           path: builds
 
       - name: Montar os arquivos
@@ -101,19 +101,25 @@ jobs:
           "RD_VERSION=$v" | Out-File -Append $env:GITHUB_ENV
           New-Item -ItemType Directory -Force dist, pkg-win/bin/64bit, pkg-win/data, zip/replaydeck/bin/64bit, zip/replaydeck/data, pdb | Out-Null
 
+          $dll = Get-ChildItem -Recurse builds -Filter replaydeck.dll | Select-Object -First 1
+          $pdb = Get-ChildItem -Recurse builds -Filter replaydeck.pdb | Select-Object -First 1
+          if (-not $dll) { throw "DLL não encontrada em builds" }
+
           # Pacote universal (OBS 30.0+)
-          Copy-Item "builds/win-obs30/replaydeck.dll" "pkg-win/bin/64bit/"
+          Copy-Item $dll.FullName "pkg-win/bin/64bit/"
           Copy-Item -Recurse plugin/data/* "pkg-win/data/"
-          if (Test-Path "builds/win-obs30/replaydeck.pdb") {
-            Copy-Item "builds/win-obs30/replaydeck.pdb" "pdb/replaydeck.pdb"
+          if ($pdb) {
+            Copy-Item $pdb.FullName "pdb/replaydeck.pdb"
           }
 
           # Zip manual direto
-          Copy-Item "builds/win-obs30/replaydeck.dll" "zip/replaydeck/bin/64bit/"
+          Copy-Item $dll.FullName "zip/replaydeck/bin/64bit/"
           Copy-Item -Recurse plugin/data/* "zip/replaydeck/data/"
           Copy-Item plugin/installer/README-windows.txt zip/README.txt
           Compress-Archive -Path zip/* -DestinationPath "dist/replaydeck-$v-windows.zip"
-          Compress-Archive -Path pdb/* -DestinationPath "dist/replaydeck-$v-windows-simbolos-pdb.zip"
+          if (Get-ChildItem pdb) {
+            Compress-Archive -Path pdb/* -DestinationPath "dist/replaydeck-$v-windows-simbolos-pdb.zip"
+          }
 
       - name: Instalador
         run: |
@@ -149,8 +155,8 @@ jobs:
 
       - uses: actions/download-artifact@v7
         with:
+          name: windows
           path: dist
-          merge-multiple: true
 
       - name: Publicar na página de Releases
         env:
@@ -162,8 +168,12 @@ jobs:
           if [[ "$GITHUB_REF" == refs/tags/v* || "${{ github.event.inputs.oficial }}" == "true" || "$MSG" == *"[release]"* || "$MSG" == *"[oficial]"* ]]; then
             TAG=v$V
             FILES=$(ls dist/*.zip | grep -v simbolos)
-            gh release create "$TAG" $FILES --target "$GITHUB_SHA" --repo "$GITHUB_REPOSITORY" --title "ReplayDeck ${TAG#v} (Windows)" \
-              --notes-file src/installer/release-notes.md --latest
+            if gh release view "$TAG" >/dev/null 2>&1; then
+              gh release upload "$TAG" $FILES --clobber
+            else
+              gh release create "$TAG" $FILES --title "ReplayDeck ${TAG#v} (Windows)" \
+                --notes-file src/installer/release-notes.md --latest
+            fi
           else
             echo "build only (no [release] in the commit message): nothing published"
           fi
