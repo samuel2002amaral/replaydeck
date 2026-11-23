@@ -168,10 +168,10 @@ jobs:
           if [[ "$GITHUB_REF" == refs/tags/v* || "${{ github.event.inputs.oficial }}" == "true" || "$MSG" == *"[release]"* || "$MSG" == *"[oficial]"* ]]; then
             TAG=v$V
             FILES=$(ls dist/*.zip | grep -v simbolos)
-            if gh release view "$TAG" >/dev/null 2>&1; then
-              gh release upload "$TAG" $FILES --clobber
+            if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+              gh release upload "$TAG" $FILES --repo "$GITHUB_REPOSITORY" --clobber
             else
-              gh release create "$TAG" $FILES --title "ReplayDeck ${TAG#v} (Windows)" \
+              gh release create "$TAG" $FILES --target "$GITHUB_SHA" --repo "$GITHUB_REPOSITORY" --title "ReplayDeck ${TAG#v} (Windows)" \
                 --notes-file src/installer/release-notes.md --latest
             fi
           else
