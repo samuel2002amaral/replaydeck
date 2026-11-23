@@ -12,8 +12,6 @@ Get the latest version on the [Releases page](../../releases/latest):
 |---|---|
 | Windows (installer, recommended) | `replaydeck-<version>-windows-installer.zip` |
 | Windows (manual) | `replaydeck-<version>-windows.zip` |
-| macOS (Apple Silicon and Intel) | `replaydeck-<version>-macos.zip` |
-| Linux (Ubuntu 24.04 and derivatives) | `replaydeck-<version>-linux.zip` |
 
 Requirements: OBS Studio 30 or newer, 64-bit. The Windows installer and the macOS `Instalar.command` detect your OBS version and install the matching build.
 
